@@ -29,10 +29,10 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Profil', style: TextStyle(color: Colors.white)),
         backgroundColor: Colors.teal,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.arrow_back, color: Colors.white),
+        //   onPressed: () => Navigator.pop(context),
+        // ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -97,26 +97,27 @@ class ProfilePage extends StatelessWidget {
   Widget _buildInfoCard(String label, String value) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(15),
-        decoration: BoxDecoration(
-          color: Colors.grey.shade100, // Warna abu-abu muda
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              label,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 5),
-            Text(
-              value.isNotEmpty ? value : 'Tidak ada data',
-              style: const TextStyle(fontSize: 14),
-            ),
-          ],
+      child: Card(
+        // ✅ Sekarang benar
+        elevation: 3,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                label,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                value.isNotEmpty ? value : 'Tidak ada data',
+                style: const TextStyle(fontSize: 14),
+              ),
+            ],
+          ),
         ),
       ),
     );
